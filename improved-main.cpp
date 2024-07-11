@@ -1,5 +1,6 @@
 #include <iostream>
 #include <list>
+#include <typeinfo>
 
 using std::cout;
 using std::string;
@@ -26,6 +27,7 @@ double calculator(char op, double num1, double num2) {
         default:
             break;
     }
+    
     return result;
 }
 
@@ -52,22 +54,12 @@ int main() {
         string op;
         string ops[] = {"+", "-", "*", "/"}; // the available operators
         bool op_found = false;
-        for (int i = 0; i < input.length(); i++) {
-            string input_token;
-            input_token = input[i];
-
-            for (int j = 0; j < std::end(ops) - std::begin(ops); j++) {
-                string ops_token;
-                ops_token = ops[j];
-
-                if (input_token == ops_token) {
-                    op = ops_token;
-                    op_found = true;
-                    break;
-                }
-            }
-
-            if (op_found == true) {
+        for (int i = 0; i < std::end(ops) - std::begin(ops); i++) {
+            string token;
+            token = ops[i];
+            if (input.find(token) != string::npos) {
+                op = token;
+                op_found = true;
                 break;
             }
         }
