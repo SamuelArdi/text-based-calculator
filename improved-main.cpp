@@ -1,6 +1,5 @@
 #include <iostream>
 #include <list>
-#include <typeinfo>
 
 using std::cout;
 using std::string;
